@@ -1,0 +1,115 @@
+{%extends 'userprofile.html' %}
+{% load static %}
+
+{%block title%} Health Services {%endblock title%}
+
+
+{%block style%} .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.results {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+.column {
+    width: 22%;
+    border:1px solid black;
+    background-color: black;
+    color:white;
+    transform:  background-color 1s smooth,color 0.5s smooth;
+    padding:2px;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+.column h3{
+    text-align: center
+}
+.column:hover {
+    
+    border:1px solid black;
+    background-color: white;
+    color:black;
+} {%endblock style%}
+{%block body%}
+
+<div class="container">
+    {% comment %} <h1>Health Services</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="symptoms">Enter your symptoms (comma-separated):</label>
+        <input type="text" id="symptoms" name="symptoms" required>
+        <button type="submit">Submit</button>
+    </form> {% endcomment %}
+
+    <div class="row">
+        <div class="col-md-8 mx-auto rounded border p-3">
+            <h2 class="text-center mb-5">Health Services</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <label for="symptoms" class="col-sm-12 col-form-label">Enter your symptoms (comma-separated):</label>
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" id="symptoms" name="symptoms" placeholder="Symptoms" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-4 d-grid">
+                        <button type="submit" class="btn btn-primary">Predict</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    {% if predicted_disease %}
+    <h3>Predicted Disease: {{ predicted_disease }}</h3>
+        <h3>Symptoms: </h3><p>{{ user_symptoms }}<p>
+                <h3>Description</h3>
+                <p>{{ description }}</p>
+        <div class="results">
+            <div class="column">
+                <h3>Precautions</h3>
+                <ol>
+                    {% for p in precautions.0 %}
+                        <li>{{ p }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="column">
+                <h3>Medications</h3>
+                <ol>
+                    {% for m in medications %}
+                        <li>{{ m }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="column">
+                <h3>Workout</h3>
+                <ol>
+                    {% for w in workout %}
+                        <li>{{ w }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="column">
+                <h3>Diets</h3>
+                <ol>
+                    {% for d in diets %}
+                        <li>{{ d }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{%endblock body%}
+
+
+
+
