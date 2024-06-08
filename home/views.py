@@ -217,3 +217,8 @@ def save_prediction(user_id, pre, med, wo, d, s, request):
     except Exception as e:
         messages.error(request, f'Error: {e}')
     return render(request, 'services.html')
+
+@login_required(login_url='login')
+def user_profile(request):
+    predictions = Prediction.objects.filter(user=request.user)
+    return render(request, 'user.html', {'predictions': predictions})

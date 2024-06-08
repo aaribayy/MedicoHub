@@ -1,0 +1,41 @@
+{% extends 'userprofile.html' %}
+{% load static %}
+
+{% block title %} User Profile {% endblock title %}
+
+{% block style %}
+<!-- Add Bootstrap CSS link here -->
+{% endblock style %}
+
+{% block body %}
+<h1>User Profile</h1>
+<h2>Welcome, {{ request.user.username }}</h2> <!-- Add the username on top -->
+
+<h2>Predictions</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symptoms</th>
+                <th>Precautions</th>
+                <th>Medications</th>
+                <th>Workout</th>
+                <th>Diet</th>
+                <th>Created at</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prediction in predictions %}
+            <tr>
+                <td>{{ prediction.symptoms }}</td>
+                <td>{{ prediction.Precautions }}</td>
+                <td>{{ prediction.Medications }}</td>
+                <td>{{ prediction.workout }}</td>
+                <td>{{ prediction.diet }}</td>
+                <td>{{ prediction.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

@@ -20,6 +20,8 @@ class Feedback(models.Model):
     message = models.TextField()
     analysis = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.subject} by {self.user.username}"
 
 
 class Prediction(models.Model):
