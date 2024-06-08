@@ -37,15 +37,7 @@
 {%block body%}
 
 <div class="container">
-    {% comment %} <h1>Health Services</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="symptoms">Enter your symptoms (comma-separated):</label>
-        <input type="text" id="symptoms" name="symptoms" required>
-        <button type="submit">Submit</button>
-    </form> {% endcomment %}
-
-    <div class="row">
+        <div class="row">
         <div class="col-md-12 mx-auto rounded border p-3">
             <h2 class="text-center mb-5">Feedback</h2>
             <form method="post">
