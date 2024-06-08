@@ -1,2 +1,2 @@
 1. MedicoHub
-   It is a medicine recomendation system developed in python using Django frame work.
+   It is an automated medicine recomendation system developed in python using Django frame work.
