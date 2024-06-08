@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from home.models import Feedback
+from home.models import Feedback, Prediction
 from django.contrib.auth.decorators import  login_required
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
@@ -81,11 +81,6 @@ def LogoutPage(request):
     return redirect('home')
 
 
-# @login_required(login_url='login')
-# def services(request):
-
-#     return render (request,'services.html')
-
 import os
 import pickle
 import numpy as np
@@ -157,6 +152,7 @@ def services(request):
             'diets': die,
             'workout': wrkout,'user_id': user_id, 
         }
+        save_prediction(user_id, pre,med,wrkout,die, symptoms,request)
     return render(request, 'services.html', context)
     # return render(request, 'services.html')
 
@@ -188,20 +184,9 @@ def get_sentiment(text):
         return 'negative'
     elif polarity < -0.8:
         return 'strongly negative'
+   
 
-# def feedback(request):
-#     if request.method== 'POST':
-#         subject=request.POST.get('subject') 
-#         message=request.POST.get('message') 
-#         user = request.user
-#         print(user,subject,message)
-        
-#         register = Feedback.objects.create(user=user, subject=subject, message=message)
-#         messages.success(request, 'Feedback sent')
-#         return redirect('/')
-#     return render(request, 'feedback.html')        
-
-
+@login_required(login_url='login')
 def feedback(request):
     if request.method == 'POST':
         subject = request.POST.get('subject')
@@ -218,4 +203,17 @@ def feedback(request):
 
 
 
-
+# def save(user_id, pre, med, wo, d):
+#     try:
+#         pred = Prediction.objects.create(user_id=user_id, Precautions=pre, Medications=med, workout=wo, diet=d)
+#         # messages.success(request, 'Predicted successfully!')
+#     except Exception as e:
+#         messages.error(request, f'Error: {e}')
+#     return render(request, 'services.html')
+def save_prediction(user_id, pre, med, wo, d, s, request):
+    try:
+        pred = Prediction.objects.create(user_id=user_id, Precautions=pre, Medications=med, workout=wo, diet=d, symptoms=s)
+        messages.success(request, 'Predicted successfully!')
+    except Exception as e:
+        messages.error(request, f'Error: {e}')
+    return render(request, 'services.html')

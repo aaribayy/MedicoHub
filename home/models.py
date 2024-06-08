@@ -22,5 +22,15 @@ class Feedback(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+class Prediction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    symptoms = models.CharField(max_length=500, default='')
+    Precautions = models.CharField(max_length=500)
+    Medications = models.CharField(max_length=500)
+    workout = models.CharField(max_length=500)
+    diet = models.CharField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add =True)
+
+    
     def __str__(self):
-        return f"{self.user.username} - {self.subject}"
+        return f"{self.user.username} - {self.created_at}"
