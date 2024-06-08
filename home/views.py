@@ -76,6 +76,9 @@ def Login(request):
     return render (request,'login.html')
 
 
+def LogoutPage(request):
+    logout(request)
+    return redirect('home')
 
 
 # @login_required(login_url='login')
