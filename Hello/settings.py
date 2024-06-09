@@ -133,3 +133,4 @@ STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, "static/img"), 
 ]
 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
