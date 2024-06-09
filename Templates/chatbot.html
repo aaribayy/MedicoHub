@@ -7,37 +7,83 @@
     <title>Chatbot</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-    <style type="text/tailwindcss">
-    @layer base {
-        ul {
-        list-style-type: circle;
-        }
-        ol {
-        list-style-type: decimal;
-        }
+    <style>
+    body {
+        background-image: url(https://t3.ftcdn.net/jpg/05/40/08/54/360_F_540085480_WN26Tz5VOFRwdPsLmK73JXNuSYsi2luw.webp); /* Replace 'your-bg-image.jpg' with your image path */
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        background-color: rgba(255, 255, 255, 0.8); /* Adjust the transparency and color as needed */
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .text {
+        color: black; /* Adjust text color as needed */
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .chat-container {
+        overflow-y: auto;
+        max-height: 60vh;
+        margin-top: 20px;
+    }
+
+    .input-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-container input {
+        flex: 1;
+        border: 1px solid #48bb78; /* Adjust border color as needed */
+        border-radius: 5px;
+        padding: 10px;
+        outline: none;
+    }
+
+    .input-container button {
+        background-color: #4299e1; /* Adjust button background color as needed */
+        color: white; /* Adjust button text color as needed */
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .input-container button:hover {
+        background-color: #2c5282; /* Adjust button hover background color as needed */
     }
     </style>
 </head>
-<body class="flex flex-col justify-between h-screen">
-    <div>
-        <p class="text-xl font-bold text-center text-green-500">
-            Chatbot - OpenAI
-        </p>
-        <div class="overflow-y-auto" style="max-height: 80vh">
+<body>
+    <div class="content">
+        <p class="text">Talk with me! As much as you want!</p>
+        <div class="chat-container">
             <div id="messageHolder" class="flex flex-col m-4"></div>
         </div>
-    </div>
-    <div class="flex flex-row m-4">
-        <input
-            type="text"
-            class="flex-1 border rounded-md m-2 border-green-600 p-2 outline-none ring-2 ring-green-600 border-transparent"
-            placeholder="Chat..."
-            name="chat"
-            id="chat"
-        />
-        <button id="btn" class="m-2 bg-blue-500 p-2 rounded-md text-white">
-            Send
-        </button>
+        <div class="input-container">
+            <button id="btn">Send</button>
+            <input
+                type="text"
+                class="border rounded-md p-2 outline-none"
+                placeholder="Chat..."
+                name="chat"
+                id="chat"
+            />
+        </div>
     </div>
     <script type="importmap">
     {
