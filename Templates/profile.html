@@ -121,7 +121,7 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Jessica Jones<span class="font-weight-light">, 27</span>
+                  {{ request.user.first_name }} {{ request.user.last_name }}<span class="font-weight-light">, @{{ request.user.username }}</span>
                 </h3>
                 <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Country, City
@@ -146,7 +146,7 @@
                   <h3 class="mb-0">My account</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">View my Profile History!</a>
+                  <a href="/userProfile" class="btn btn-sm btn-primary">View my Profile History!</a>
                 </div>
               </div>
             </div>
@@ -158,13 +158,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{ request.user.username }} ">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" value="{{ request.user.email }}">
                       </div>
                     </div>
                   </div>
@@ -172,13 +172,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{ request.user.first_name }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{ request.user.last_name }}">
                       </div>
                     </div>
                   </div>
