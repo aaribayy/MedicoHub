@@ -1,0 +1,6 @@
+django==5.0.6
+pickle 
+numpy
+scikit-learn 
+os
+textblob
