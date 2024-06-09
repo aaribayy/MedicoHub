@@ -13,6 +13,10 @@ urlpatterns = [
     path('signup/',views.SignUp, name='signup'),
     path('logout/',views.LogoutPage,name='logout'),
     path('userProfile/',views.user_profile,name='profile'),
+<<<<<<< HEAD
     path('chat/', views.chatbot, name='chat')
     
+=======
+    path('profile/',views.profile, name="MyuserProfile")
+>>>>>>> dd2c595c54982b9616578a755f1eb90fe1c0c6b9
 ]
