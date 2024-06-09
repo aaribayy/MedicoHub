@@ -1,0 +1,78 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px; /* Increase the max-width to make the container broader */
+    margin: 20px auto;
+    padding: 20px;
+    /* Gradient background with specified colors
+    background: linear-gradient(135deg, #5e72e4, #5603ad, #8965e0, #f3a4b5, #f5365c); */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;  /* Center align text within the container */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+h1, h2 {
+    color: #0f0f0f;
+}
+
+.table-background {
+    background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.table-responsive {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly transparent background */
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+}
+
+th {
+    background-color: rgba(53, 55, 58, 0.9); /* Slightly transparent background */
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+    align-items: center;
+    text-align: center;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(200, 192, 192, 0.8); /* Slightly transparent background */
+}
+
+tr:hover {
+    background-color: rgba(130, 132, 133, 0.8); /* Slightly transparent background */
+    transform: scale(1.1); /* Slight scale-up effect */
+    transition: background-color 0.3s ease;
+}

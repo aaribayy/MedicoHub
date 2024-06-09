@@ -77,7 +77,7 @@ def change_profile(request):
         user.last_name = request.POST.get('last_name')
         user.email = request.POST.get('email')
         user.save()
-        return redirect('profile')
+        return redirect('/profile')
     return render(request, 'edit.html')
 
 

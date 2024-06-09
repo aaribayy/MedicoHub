@@ -1,41 +1,47 @@
-{% extends 'userprofile.html' %}
-{% load static %}
 
-{% block title %} User Profile {% endblock title %}
+{% load static %}
 
 {% block style %}
 <!-- Add Bootstrap CSS link here -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
 {% endblock style %}
 
 {% block body %}
-<h1>User Profile</h1>
-<h2>Welcome, {{ request.user.first_name }} {{ request.user.last_name }}</h2> <!-- Add the username on top -->
+<div class="container">
+    <h1 id='profile'>Profile History</h1>
+    <h2 id='nametag'>heres' your history, {{ request.user.first_name }} {{ request.user.last_name }}</h2> <!-- Add the username on top -->
 
-<h2>Predictions</h2>
-<div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Symptoms</th>
-                <th>Precautions</th>
-                <th>Medications</th>
-                <th>Workout</th>
-                <th>Diet</th>
-                <th>Created at</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for prediction in predictions %}
-            <tr>
-                <td>{{ prediction.symptoms }}</td>
-                <td>{{ prediction.Precautions }}</td>
-                <td>{{ prediction.Medications }}</td>
-                <td>{{ prediction.workout }}</td>
-                <td>{{ prediction.diet }}</td>
-                <td>{{ prediction.created_at }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <h2>Predictions</h2> <hr>
+    
+    <div class="table-background">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Symptoms</th>
+                        <th>Precautions</th>
+                        <th>Medications</th>
+                        <th>Workout</th>
+                        <th>Diet</th>
+                        <th>Created at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prediction in predictions %}
+                    <tr>
+                        <td>{{ prediction.symptoms }}</td>
+                        <td>{{ prediction.Precautions }}</td>
+                        <td>{{ prediction.Medications }}</td>
+                        <td>{{ prediction.workout }}</td>
+                        <td>{{ prediction.diet }}</td>
+                        <td>{{ prediction.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock body %}
