@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 import numpy as np
 
+
+
 @login_required(login_url='login')
 def profile(request):
     return render(request,'profile.html')
