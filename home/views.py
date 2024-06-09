@@ -5,7 +5,10 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
+import numpy as np
 
+def profile(request):
+    return render(request,'profile.html')
 
 # Create your views here.
 def index(request):
@@ -217,6 +220,7 @@ def save_prediction(user_id, pre, med, wo, d, s, request):
     except Exception as e:
         messages.error(request, f'Error: {e}')
     return render(request, 'services.html')
+
 
 @login_required(login_url='login')
 def user_profile(request):
