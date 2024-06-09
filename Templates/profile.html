@@ -18,17 +18,7 @@
       <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a>
-        <!-- Form -->
-        <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-          <div class="form-group mb-0">
-            <div class="input-group input-group-alternative">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span> 
-              </div>
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
-          </div> 
-        </form> -->
+        
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
@@ -38,7 +28,7 @@
                         <img src="{% static 'img/download.jfif' %}" alt="Image placeholder">              
                   </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                  <span class="mb-0 text-sm  font-weight-bold"></span>
                 </div>
               </div>
             </a>
@@ -81,8 +71,8 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
-            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+            <h1 class="display-2 text-white">Hello {{ request.user.first_name }} {{ request.user.last_name }}</h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can see your history, edit your Profile and many more, using our website.</p>
             <a href="/editprofile" class="btn btn-info">Edit profile</a>
           </div>
         </div>
@@ -141,7 +131,7 @@
                   <i class="ni education_hat mr-2"></i>
                 </div>
                 <hr class="my-4">
-                <a href="#" class="btn btn-sm btn-default align-items-center">LogOut</a>
+                <a href="/logout" class="btn btn-sm btn-default align-items-center">LogOut</a>
               </div>
             </div>
           </div>
