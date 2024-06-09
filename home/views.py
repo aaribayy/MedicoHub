@@ -226,3 +226,7 @@ def save_prediction(user_id, pre, med, wo, d, s, request):
 def user_profile(request):
     predictions = Prediction.objects.filter(user=request.user)
     return render(request, 'user.html', {'predictions': predictions})
+
+
+def chatbot(request):
+    return render(request, 'chatbot.html')
