@@ -53,6 +53,8 @@ from django.contrib.auth.hashers import check_password
 def SignUp(request):
     if request.method=='POST':
         uname=request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
         email=request.POST.get('email')
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
@@ -60,6 +62,8 @@ def SignUp(request):
             return HttpResponse("Your password and confrom password are not Same!!")
         else:
             my_user=User.objects.create_user(uname,email,pass1)
+            my_user.first_name = first_name
+            my_user.last_name = last_name
             my_user.save()
             return redirect('login')
     return render (request,'signup.html')
