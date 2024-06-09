@@ -69,6 +69,17 @@ def SignUp(request):
             return redirect('login')
     return render (request,'signup.html')
 
+@login_required(login_url='login')
+def change_profile(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.email = request.POST.get('email')
+        user.save()
+        return redirect('profile')
+    return render(request, 'edit.html')
+
 
 
 def Login(request):
