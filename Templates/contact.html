@@ -1,10 +1,39 @@
 {% extends 'base.html' %}
 {% block title %} Contact {% endblock title %}
 {% block body %}
-<div class="container-fluid px-0">
-<img src="/static/photo.jfif" class="d-block w-100 mx-0" alt="...">
-
-</div>
-
-<h2 class="text-center" >Contact Us</h2>
-{%endblock body %}
+<header class="py-4 text-center">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container-fluid px-0">
+        <img src="/static/photo.jfif" class="d-block w-100 mx-0" alt="...">
+    </div>
+    <h2>Contact Us</h2>
+</header>
+<section>
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="rounded-icon mx-3">
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook" style="font-size:48px;color:#3288A5"></i></a>
+        </div>
+        <div class="rounded-icon mx-3">
+            <a href="tel:"><i class="fa fa-whatsapp" style="font-size:48px;color:#3288A5"></i></a>
+        </div>
+        <div class="rounded-icon mx-3">
+            <a href="mailto:medicohub@gmail.com"><i class="fa fa-envelope" style="font-size:48px;color:#3288A5"></i></a>
+        </div>
+    </div>
+</section>
+<style>
+    .rounded-icon {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: hand;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock body %}
