@@ -93,3 +93,16 @@
     margin-bottom: -15%;
     color: #495057;
 }
+
+.navigateto{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #161616;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
