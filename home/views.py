@@ -75,10 +75,11 @@ def change_profile(request):
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('last_name')
         user.email = request.POST.get('email')
+        new_username = request.POST.get('new_username')
+        user.username = new_username
         user.save()
         return redirect('profile')
     return render(request, 'edit.html')
-
 
 
 def Login(request):
