@@ -1,143 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Design by foolishdeveloper.com -->
+    {% load static %}
     <title>Signup Page</title>
- 
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <style media="screen">
-      *,
-      *:before,
-      *:after {
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-      }
-      .background {
-        width: 430px;
-        height: 520px;
-        position: absolute;
-        transform: translate(-50%,-50%);
-        left: 50%;
-        top: 50%;
-    }
-      body {
-          background-image: url(/static/medicines.jpg); 
-          width:100vh;height:100vh;
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-      }
-      form {
-          height: 600px;
-          width: 450px;
-          background-color: rgba(255,255,255,0.13);
-          position: absolute;
-          transform: translate(-50%,-50%);
-          top: 50%;
-          left: 50%;
-          border-radius: 10px;
-          backdrop-filter: blur(10px);
-          border: 2px solid rgba(255,255,255,0.1);
-          box-shadow: 0 0 40px rgba(8,7,16,0.6);
-          padding: 50px 35px;
-      }
-      form * {
-          font-family: 'Poppins',sans-serif;
-          color: #ffffff;
-          letter-spacing: 0.5px;
-          outline: none;
-          border: none;
-      }
-      form h3 {
-          font-size: 32px;
-          font-weight: 500;
-          line-height: 42px;
-          text-align: center;
-      }
-      label {
-          display: block;
-          margin-top: 30px;
-          font-size: 16px;
-          font-weight: 500;
-      }
-      input {
-          display: block;
-          height: 40px;
-          width: 100%;
-          background-color: rgba(255,255,255,0.07);
-          border-radius: 3px;
-          padding: 0 10px;
-          margin-top: 2px;
-          font-size: 14px;
-          font-weight: 300;
-      }
-      ::placeholder {
-          color: #e5e5e5;
-      }
-      button {
-          margin-top: 14px;
-          width: 100%;
-          background-color: #ffffff;
-          color: #080710;
-          padding: 15px 0;
-          font-size: 18px;
-          font-weight: 600;
-          border-radius: 5px;
-          cursor: pointer;
-      }
-      .social {
-          margin-top: 30px;
-          display: flex;
-      }
-      .social div {
-          background: red;
-          width: 150px;
-          border-radius: 3px;
-          padding: 5px 10px 10px 5px;
-          background-color: rgba(255,255,255,0.27);
-          color: #eaf0fb;
-          text-align: center;
-      }
-      .social div:hover {
-          background-color: rgba(255,255,255,0.47);
-      }
-      .social .fb {
-          margin-left: 25px;
-      }
-      .social i {
-          margin-right: 4px;
-      }
-    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 <body>
-    <form action="{% url 'signup' %}" method="post">
-        {% csrf_token %} 
-        <h3>Signup Here</h3>
-
-        <label for="username">Username</label>
-        <input type="text" placeholder="Username" name="username" id="username">
-
-        <label for="first_name">First Name</label>
-        <input type="text" placeholder="First Name" name="first_name" id="first_name">
-
-        <label for="last_name">Last Name</label>
-        <input type="text" placeholder="Last Name" name="last_name" id="last_name">
-
-        <label for="email">Email</label>
-        <input type="email" placeholder="Email or Phone" name="email" id="email">
-
-        <label for="password1">Password</label>
-        <input type="password" placeholder="Password" id="password1" name="password1">
-
-        <label for="password2">Confirm Password</label>
-        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
-        <button type="submit">Signup</button>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+                <h3>Welcome</h3>
+                <p>You are 30 seconds away from earning your own money!</p>
+                {% comment %} <input type="submit" name="" value="Login" /><br /> {% endcomment %}
+                <button class="navigateto"><a href="{% url 'login' %}">Login</a></button>
         
-        <a href="{% url 'login' %}">I have already an account</a>
-    </form>
+            </div>
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Signup Here</h3>
+                        <form action="{% url 'signup' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name *" value="" name="first_name"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Your Email *" value="" name="email"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password *" value="" name="password1" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name *" value="" name="last_name"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Your Username *" value="" name="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password *" name="password2"   value="" />
+                                    </div>
+                                    <input type="submit" class="btnRegister" value="SignUp" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
