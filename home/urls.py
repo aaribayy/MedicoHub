@@ -14,7 +14,7 @@ urlpatterns = [
     path('logout/',views.LogoutPage,name='logout'),
     path('userProfile/',views.user_profile,name='profile'),
 <<<<<<< HEAD
-    path('chat/', views.chatbot, name='chat')
+    path('chat/', views.chatbot, name='chat'),
     
 =======
     path('profile/',views.profile, name="MyuserProfile")
