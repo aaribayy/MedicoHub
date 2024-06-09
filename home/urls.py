@@ -13,5 +13,8 @@ urlpatterns = [
     path('signup/',views.SignUp, name='signup'),
     path('logout/',views.LogoutPage,name='logout'),
     path('userProfile/',views.user_profile,name='profile'),
-    path('profile/',views.profile, name="MyuserProfile")
+    
+    
+    path('profile/',views.profile, name="MyuserProfile"),
+    path('chat/', views.chatbot, name='chat'),
 ]
