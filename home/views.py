@@ -20,7 +20,7 @@ def index(request):
     # return HttpResponse('This is home page')
 
 def about(request):
-    return HttpResponse('This is about page')
+    return render(request, 'about.html')
 
 
 def contact(request):
@@ -264,5 +264,8 @@ def user_profile(request):
     return render(request, 'user.html', {'predictions': predictions})
 
 
+@login_required(login_url='login')
 def chatbot(request):
     return render(request, 'chatbot.html')
+
+
