@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNp34T2LBKo1dRxkSb4g5CRzj4A68w0z1RmJrU8yXTQUK8eI4A5Q" crossorigin="anonymous">
+
+<!-- Custom CSS -->
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+  }
+  .about {
+    padding: 60px 0;
+  }
+  .who-we-are {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  .read-more {
+    color: #007bff;
+    text-decoration: none;
+  }
+  .read-more:hover {
+    text-decoration: underline;
+  }
+  #scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    background: #fff url('https://i.gifer.com/ZZ5H.gif') no-repeat center center;
+  }
+</style>
+
+<!-- About Section -->
+<section id="about" class="about section">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+        <p class="who-we-are">Who We Are</p>
+        <h3>Medico Hub</h3>
+        <p class="fst-italic">
+          MedicoHub is your online medicines recommendator. Feel free to use our
+          services related to medicines predictions and our chatbot.
+        </p>
+        <ul>
+          <li>
+            <i class="bi bi-check-circle"></i>
+            <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+          </li>
+          <li>
+            <i class="bi bi-check-circle"></i>
+            <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span>
+          </li>
+          <li>
+            <i class="bi bi-check-circle"></i>
+            <span>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+              irure dolor in reprehenderit in voluptate trideta storacalaperda
+              mastiro dolore eu fugiat nulla pariatur.
+            </span>
+          </li>
+        </ul>
+        <a href="#" class="read-more">
+          <span>Read More</span><i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <img
+              src="https://images.unsplash.com/photo-1544829894-eb023ba95a38?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="img-fluid"
+              alt=""
+            />
+          </div>
+          <div class="col-lg-6">
+            <div class="row gy-4">
+              <div class="col-lg-12">
+                <img
+                  src="https://images.unsplash.com/photo-1573883429746-084be9b5cfca?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fG1lZGljaW5lc3xlbnwwfHwwfHx8MA%3D%3D"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="col-lg-12">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1671985131449-f2ac92a5882d?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /About Section -->
+
+
+
+
+{% endblock body %}

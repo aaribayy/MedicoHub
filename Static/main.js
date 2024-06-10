@@ -21,6 +21,7 @@ const chatGemini = async (message) => {
 const addMessage = (msg, direction) => {
     const messageHolder = document.getElementById("messageHolder");
     const message = document.createElement("div");
+    
     const colour = direction !== "start" ? "grey" : "red";
     message.innerHTML = `
         <div class="flex flex-col items-${direction}">

@@ -20,7 +20,7 @@ def index(request):
     # return HttpResponse('This is home page')
 
 def about(request):
-    return HttpResponse('This is about page')
+    return render(request,'about.html')
 
 
 def contact(request):
