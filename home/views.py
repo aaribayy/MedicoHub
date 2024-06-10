@@ -264,5 +264,6 @@ def user_profile(request):
     return render(request, 'user.html', {'predictions': predictions})
 
 
+@login_required(login_url='login')
 def chatbot(request):
     return render(request, 'chatbot.html')
