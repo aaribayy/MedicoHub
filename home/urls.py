@@ -17,4 +17,5 @@ urlpatterns = [
     path('profile/',views.profile, name="MyuserProfile"),
     path('chat/', views.chatbot, name='chat'),
     path('changepassword/', views.change_password, name='change_password'),
+    
 ]
