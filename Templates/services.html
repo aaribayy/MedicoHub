@@ -1,88 +1,182 @@
+<<<<<<< HEAD
 
 {%extends 'userprofile.html' %}
+=======
+{% extends 'userprofile.html' %}
+>>>>>>> abb288cc58cc4241388eb812bcf27583590e7eb3
 {% load static %}
 
-{%block style%} 
-<link rel="stylesheet" href="{% static 'css/feedback.css' %}">
-{%endblock style%}
+{% block title %} Health Services {% endblock title %}
 
-{%block body%}
+{% block style %}
+body {
+    background-image: url(/static/medicines.jpg); 
+    width:100%;height:100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f9fc;
+    background-color: rgba(247, 249, 252, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top:20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.results {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0px;
+    flex-wrap: wrap;
+}
+
+.column {
+    width: 48%;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: #32325d;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.column:hover {
+    background-color: #b0c4de;  
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #422579;
+}
+
+form {
+    width: 100%;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #422579;
+    box-shadow: 0 0 5px rgba(66, 37, 121, 0.5);
+}
+
+
+h3 {
+    margin-top: 0;
+}
+{% endblock style %}
+
+{% block body %}
 <div class="container">
-    {% comment %} <h1>Health Services</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="symptoms">Enter your symptoms (comma-separated):</label>
-        <input type="text" id="symptoms" name="symptoms" required>
-        <button type="submit">Submit</button>
-    </form> {% endcomment %}
+    {% comment %} <h2 class="text-center mb-5">Predicted Corner</h2> {% endcomment %}
+    <div class="col-md-8 mx-auto rounded border p-3">
+        <h1 class="text-center mb-5">Prediction Corner</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="row mb-3 justify-content-center">
+                <label for="symptoms" class="col-sm-12 col-form-label text-center"style="font-size: larger; font-weight: bold;" >Enter your symptoms (comma-separated):</label>
+                <div class="col-sm-12">
+                    <input class="form-control" type="text" id="symptoms" name="symptoms" placeholder="Symptoms" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-btn btn-dark btn-lg btn-block">Predict</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
 
-    <div class="row">
-        <div class="col-md-8 mx-auto rounded border p-3">
-            <h2 class="text-center mb-5">Prediction Corner</h2>
-            <form method="post">
+    <div class="results">
+        <div class="column">
+            
+            {% comment %} <form method="post">
                 {% csrf_token %}
-                <div class="row mb-3">
-                    <label for="symptoms" class="col-sm-12 col-form-label">Enter your symptoms (comma-separated):</label>
+                <div class="row mb-3 justify-content-center">
+                    <label for="symptoms" class="col-sm-12 col-form-label text-center" style="font-size: larger; font-weight: bold;">Enter your symptoms (comma-separated):</label>
                     <div class="col-sm-12">
                         <input class="form-control" type="text" id="symptoms" name="symptoms" placeholder="Symptoms" required>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="offset-sm-4 col-sm-4 d-grid">
-                        <button type="submit" class="btn btn-primary">Predict</button>
+                        <button type="submit" class="btn btn-btn btn-dark btn-lg btn-block">Predict</button>
                     </div>
                 </div>
-                
-            </form>
+            </form> {% endcomment %}
+
+            
+            {% if predicted_disease %}
+            <h3>Symptoms</h3>
+            <p style="font-size: larger;">{{ user_symptoms }}</p>
+            <h3>Predicted Disease</h3>
+            <p style="font-size: larger;">{{ predicted_disease }}</p>
+            <h3>Description</h3>
+            <p style="font-size: larger;">{{ description }}</p>
+            {% endif %}
         </div>
+        {% if predicted_disease %}
+        <div class="column">
+            
+            <h3>Precautions</h3>
+            <ol style="font-size: larger;">
+                {% for p in precautions.0 %}
+                    <li>{{ p }}</li>
+                {% endfor %}
+            </ol>
+            <h3>Medications</h3>
+            <ol style="font-size: larger;">
+                {% for m in medications %}
+                    <li>{{ m }}</li>
+                {% endfor %}
+            </ol>
+            <h3>Workout</h3>
+            <ol style="font-size: larger;">
+                {% for w in workout %}
+                    <li>{{ w }}</li>
+                {% endfor %}
+            </ol>
+            <h3>Diets</h3>
+            <ol style="font-size: larger;">
+                {% for d in diets %}
+                    <li>{{ d }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
     </div>
-    
-
-    {% if predicted_disease %}
-    <h3>Predicted Disease: {{ predicted_disease }}</h3>
-        <h3>Symptoms: </h3><p>{{ user_symptoms }}<p>
-                <h3>Description</h3>
-                <p>{{ description }}</p>
-        <div class="results">
-            <div class="column">
-                <h3>Precautions</h3>
-                <ol>
-                    {% for p in precautions.0 %}
-                        <li>{{ p }}</li>
-                    {% endfor %}
-                </ol>
-            </div>
-            <div class="column">
-                <h3>Medications</h3>
-                <ol>
-                    {% for m in medications %}
-                        <li>{{ m }}</li>
-                    {% endfor %}
-                </ol>
-            </div>
-            <div class="column">
-                <h3>Workout</h3>
-                <ol>
-                    {% for w in workout %}
-                        <li>{{ w }}</li>
-                    {% endfor %}
-                </ol>
-            </div>
-            <div class="column">
-                <h3>Diets</h3>
-                <ol>
-                    {% for d in diets %}
-                        <li>{{ d }}</li>
-                    {% endfor %}
-                </ol>
-            </div>
-        </div>
-    {% endif %}
 </div>
-
-{%endblock body%}
-
-
-
-
+{% endblock body %}
