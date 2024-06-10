@@ -267,3 +267,5 @@ def user_profile(request):
 @login_required(login_url='login')
 def chatbot(request):
     return render(request, 'chatbot.html')
+
+
