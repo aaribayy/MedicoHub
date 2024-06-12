@@ -101,18 +101,35 @@ def change_password(request):
     return render(request, 'change_password.html', {'form': form})
 
 
-
 def Login(request):
-    if request.method=='POST':
-        username=request.POST.get('username')
-        pass1=request.POST.get('pass')
-        user=authenticate(request,username=username,password=pass1)
+    context = {}
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        pass1 = request.POST.get('pass')
+        user = authenticate(request, username=username, password=pass1)
+        
         if user is not None:
-            login(request,user)
+            login(request, user)
             return redirect('/')
         else:
-            return HttpResponse ("Username or Password is incorrect!!!")
-    return render (request,'login.html')
+            # Determine which field has the error
+            context['username'] = username  # Keep the entered username
+            if not authenticate(request, username=username, password=None):
+                context['username_error'] = True
+                context['password_error'] = True
+    
+    return render(request, 'login.html', context)
+# def Login(request):
+#     if request.method=='POST':
+#         username=request.POST.get('username')
+#         pass1=request.POST.get('pass')
+#         user=authenticate(request,username=username,password=pass1)
+#         if user is not None:
+#             login(request,user)
+#             return redirect('/')
+#         else:
+#             return HttpResponse ("Username or Password is incorrect!!!")
+#     return render (request,'login.html')
 
 
 def LogoutPage(request):
