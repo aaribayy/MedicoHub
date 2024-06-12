@@ -53,23 +53,43 @@ from django.contrib.auth.hashers import check_password
 
 
 
+
 def SignUp(request):
-    if request.method=='POST':
-        uname=request.POST.get('username')
+    context = {}
+    if request.method == 'POST':
+        uname = request.POST.get('username')
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        email=request.POST.get('email')
-        pass1=request.POST.get('password1')
-        pass2=request.POST.get('password2')
-        if pass1!=pass2:
-            return HttpResponse("Your password and confrom password are not Same!!")
+        email = request.POST.get('email')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+        
+        if pass1 != pass2:
+            context['password_error'] = "Your password and confirm password are not the same!"
+            context['username'] = uname
+            context['first_name'] = first_name
+            context['last_name'] = last_name
+            context['email'] = email
+        elif User.objects.filter(email=email).exists():
+            context['email_error'] = "Email already exists, please choose another one."
+            context['username'] = uname
+            context['first_name'] = first_name
+            context['last_name'] = last_name
+            context['email'] = email
+        elif User.objects.filter(username=uname).exists():
+            context['username_error'] = "Username already exists, please choose another one."
+            context['username'] = uname
+            context['first_name'] = first_name
+            context['last_name'] = last_name
+            context['email'] = email
         else:
-            my_user=User.objects.create_user(uname,email,pass1)
+            my_user = User.objects.create_user(uname, email, pass1)
             my_user.first_name = first_name
             my_user.last_name = last_name
             my_user.save()
             return redirect('login')
-    return render (request,'signup.html')
+
+    return render(request, 'signup.html', context)
 
 @login_required(login_url='login')
 def change_profile(request):
